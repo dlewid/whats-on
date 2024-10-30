@@ -6,9 +6,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Whats On</title>
+    {% load static %}
 </head>
 <body>
     {% include "navbar.html" %}
     hello world
+    {% for event in events %}<div>{{ event.title }}</div>{% endfor %}
 </body>
 </html>
