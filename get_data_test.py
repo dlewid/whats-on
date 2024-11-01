@@ -6,7 +6,6 @@ import json
 # Could make a lot of accounts and change the static api_key to dependent on the object.
 # This would be necessary if we needed a lot of accounts
 class EventManager:
-    # secret key
     # postgreSQL w3schools
 
     # Mapping of sports to API endpoints.
@@ -73,6 +72,12 @@ class EventManager:
             return []
 
 
+    def seperate_date_time(self, date_time):
+        datetime_obj = datetime.fromisoformat(date_time)
+        date = datetime_obj.date()
+        time = datetime_obj.strftime("%I:%M %p")
+        return (date, time)
+
     def sports_games_today(self):
         data = self.fetch_games_data()
         for game in data:
@@ -80,7 +85,15 @@ class EventManager:
             if game_date_str and isinstance(game_date_str, str):
                 game_date = datetime.fromisoformat(game_date_str).date()
                 if game_date == self.today_date:
-                    event = Event(self.sport, game.get('HomeTeam'), game.get('AwayTeam'), game.get('DateTime'), game.get('GameID'))
+                    date, time = self.seperate_date_time(game.get('DateTime'))
+                    event = Event(
+                        self.sport,
+                        game.get('HomeTeam'),
+                        game.get('AwayTeam'),
+                        time,
+                        game.get('GameID'),
+                        date,
+                    )
                     self.event_list.append(event)
 
     
@@ -91,12 +104,13 @@ class EventManager:
 
 # event class
 class Event:
-    def __init__(self, sport, home_team, away_team, event_time, game_id):
+    def __init__(self, sport, home_team, away_team, event_time, game_id, event_date):
         self.sport = sport
         self.home_team = home_team
         self.away_team = away_team
         self.event_time = event_time
         self.game_id = game_id
+        self.event_date = event_date
     
 
     def __str__(self):
@@ -104,11 +118,12 @@ class Event:
             f"Sport: {self.sport}\n"
             f"Home Team: {self.home_team}\n"
             f"Away Team: {self.away_team}\n"
-            f"Event Time: {self.event_time}\n"
+            f"Event Time (ET): {self.event_time}\n"
+            f"Event Date: {self.event_date}\n"
             f"Game ID: {self.game_id}\n"
         )
 
 
 # test
-find_events = EventManager("nfl", "2024-09-05")
+find_events = EventManager("nfl", "2024-11-03")
 find_events.print_events()
