@@ -2,15 +2,35 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang = "en">
-
+<link rel="stylesheet" href="{% static '/mystyles.css' %}">
+<link rel="stylesheet" href="{% static '/mystyles.css' %}">
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 <head>
     <meta charset="UTF-8">
     <title>Whats On</title>
-    {% load static %}
+
 </head>
 <body>
+
+<!--    hello world-->
+<!--    {% for event in events %}<div>{{ event.title }}</div>{% endfor %}-->
     {% include "navbar.html" %}
-    hello world
-    {% for event in events %}<div>{{ event.title }}</div>{% endfor %}
+   <div class="container mt-4">
+
+        <div class="row">
+            {% for event in events %}
+            <div class="col-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ event.title }}</h5>
+                        <p class="card-text">Time: {{ event.time }}</p>
+                        <p class="card-text">Description of the event goes here.</p>
+                        <a href="#" class="btn bg-danger bg-gradient">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </body>
 </html>

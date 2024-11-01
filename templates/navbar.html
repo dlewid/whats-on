@@ -2,35 +2,19 @@
 {% load static %}
 <body>
 <!--  {% load static %}-->
+
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static '/mystyles.css' %}">
   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 
-<!--  <nav class="navbar navbar-light bg-light">-->
-<!--    <div class="container-fluid d-flex justify-content-between align-items-center">-->
-<!--      <a class="navbar-brand d-flex align-items-center" href="#">-->
-<!--        <img src="{% static 'images/temp-logo.png' %}"-->
+<nav class="navbar navbar-custom navbar-expand-lg navbar-light bg-light" >
+  <div class="container-fluid">
+<!--     <img src="{% static 'images/temp-logo.png' %}"-->
 <!--             width="62"-->
 <!--             height="62"-->
 <!--             class="d-inline-block align-top"-->
 <!--             alt="" />-->
-<!--        <span class="ms-2 header-title fs-2">Whats On</span>-->
-<!--      </a>-->
-<!--      <div class="d-flex">-->
-<!--        <button class="btn me-2 fs-2">Events</button>-->
-<!--        <button class="btn fs-2">Sports</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </nav>-->
-
-<nav class="navbar navbar-custom navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-     <img src="{% static 'images/temp-logo.png' %}"
-             width="62"
-             height="62"
-             class="d-inline-block align-top"
-             alt="" />
-    <a class="navbar-brand" href="#">What's On</a>
+    <a class="navbar-brand custom-brand" href="#" style="font-weight: bold; font-style: italic;">WHATS ON</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -51,13 +35,25 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item" href="#">Football</a></li>
+            <li><a class="dropdown-item" href="#">College Football</a></li>
             <li><a class="dropdown-item" href="#">Basketball</a></li>
+            <li><a class="dropdown-item" href="#">College Basketball</a></li>
             <li><a class="dropdown-item" href="#">Baseball</a></li>
             <li><a class="dropdown-item" href="#">Soccer</a></li>
+            <li><a class="dropdown-item" href="#">Mixed Martial Arts</a></li>
+            <li><a class="dropdown-item" href="#">Golf</a></li>
+            <li><a class="dropdown-item" href="#">Nascar</a></li>
+            <li><a class="dropdown-item" href="#">Tennis</a></li>
+
+
+
           </ul>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+
+
+
 </body>

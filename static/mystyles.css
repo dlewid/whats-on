@@ -2,8 +2,9 @@
 /* color template initial
     main: #c94c4c
     text: # */
+
 .navbar.navbar-expand-lg {
-    background-color: #c94c4c !important;
+    background-color: #c94c4c; !important
 }
 .navbar.navbar-expand-lg .navbar-nav .nav-link {
     color: #F9F6EE !important;

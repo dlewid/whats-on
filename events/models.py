@@ -7,4 +7,5 @@ class Event(models.Model):
     title = models.CharField(max_length=200)
     sport_category = models.CharField(max_length=200)
     date = models.DateTimeField()
+    time = models.DateTimeField(default=timezone.now) #default for now
     description = models.TextField()
