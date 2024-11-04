@@ -19,4 +19,4 @@ env/
 api_key.json
 
 # DB Setup
-db
+db.json
