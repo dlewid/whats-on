@@ -20,3 +20,4 @@ api_key.json
 
 # DB Setup
 db.json
+db_config.py
