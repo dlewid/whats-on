@@ -1,9 +1,9 @@
 import json
 import psycopg2
+import get_data
 # from psycopg2 import sql, OperationalError
 
-
-
+# Setting up db parameters using 'db.json'.
 try:
     with open('db.json', 'r') as file:
         data = json.load(file)
@@ -19,16 +19,31 @@ except FileNotFoundError:
 except json.JSONDecodeError:
     raise ValueError(f"Invalid Json format in {file} file")
 
+def post_data(sport):
+    # Setting up the connection to the db.
+    connection = psycopg2.connect(**db_params)
+    cursor = connection.cursor()
 
-connection = psycopg2.connect(**db_params)
+    events_manager = get_data.EventManager(sport)
+    events = events_manager.event_list
 
-cursor = connection.cursor()
+    # Query for inserting event data into rows.
+    for event in events:
+        cursor.execute(
+            """
+            INSERT INTO events (event_id, home_team, away_team, sport, event_date, event_time)
+            VALUES (%s, %s, %s, %s, %s, %s)
+            """,
+            (event.game_id, event.home_team, event.away_team, event.sport, event.event_date, event.event_time)
+        )
 
-cursor.execute("Select * from events;")
-db_version = cursor.fetchone()
-print("Connected to database, version:", db_version)
+    # Saving the data to the db.
+    connection.commit()
+    # Closing the connection to the db.
+    cursor.close()
+    connection.close()
 
-cursor.close()
-connection.close()
+post_data("nfl")
+
 
 
