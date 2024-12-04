@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-    <link rel="stylesheet" href="{% static '/mystyles.css' %}">
-    <link rel="stylesheet" href="{% static '/mystyles.css' %}">
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<!--make a base template, load in everything at the bottom in blocks, for one static load-->
+<!--    <link rel="stylesheet" href="{% static '/mystyles.css' %}">-->
+<!--    <link rel="stylesheet" href="{% static 'bootstrap-5.3.3-dist/css/bootstrap.min.css' %}">-->
+<!--    <link rel="stylesheet" href="{% static '/mystyles.css' %}">-->
+<!--    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>-->
     <head>
         <meta charset="UTF-8">
         <title>Whats On</title>
+        <link rel="stylesheet" href="{% static 'bootstrap-5.3.3-dist/css/bootstrap.min.css' %}">
+        <script src="{% static 'bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js' %}"></script>
     </head>
     <body>
+
         <!--    hello world-->
         <!--    {% for event in events %}<div>{{ event.title }}</div>{% endfor %}-->
         {% include "navbar.html" %}
