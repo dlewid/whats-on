@@ -7,4 +7,5 @@ app_name = "events"
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("reviews/", views.reviews, name="reviews")
 ]

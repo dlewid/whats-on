@@ -5,9 +5,14 @@ from .models import Event
 
 from django.http import HttpResponse
 
+
 def index(request):
     event_list = Event.objects.all()
     context = {
-        "events" : event_list,
+        "events": event_list,
     }
     return render(request, 'events/index.html', context)
+
+
+def reviews(request):
+    return render(request, 'events/review.html')
