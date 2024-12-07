@@ -11,27 +11,109 @@
         <title>Whats On</title>
         <link rel="stylesheet" href="{% static 'bootstrap-5.3.3-dist/css/bootstrap.min.css' %}">
         <script src="{% static 'bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js' %}"></script>
+        <style>
+        .card {
+            transition: transform 0.2s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: none;
+            margin-bottom: 1rem;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .matchup-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1.5rem;
+        }
+
+        .team {
+            text-align: center;
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .vs {
+            font-weight: bold;
+            color: #e74c3c;
+            font-size: 1.5rem;
+            padding: 0 2rem;
+        }
+
+        .event-time {
+            color: #666;
+            text-align: center;
+            font-size: 1rem;
+            border-left: 1px solid #eee;
+            padding-left: 2rem;
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .team-name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin: 0;
+            font-size: 1.25rem;
+        }
+
+        .btn-view-details {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            border: none;
+            color: white;
+            padding: 0.5rem 2rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-view-details:hover {
+            background: linear-gradient(45deg, #c0392b, #e74c3c);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+            color: white;
+        }
+
+        .action-container {
+            border-left: 1px solid #eee;
+            padding-left: 2rem;
+            flex: 1;
+            max-width: 200px;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
     </head>
     <body>
-
-        <!--    hello world-->
-        <!--    {% for event in events %}<div>{{ event.title }}</div>{% endfor %}-->
         {% include "navbar.html" %}
-        <div class="container mt-4">
-            <div class="row">
-                {% for event in events %}
-                    <div class="col-6 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ event.home_team }}</h5>
-                                <p class="card-text">Time: {{ event.event_time }}</p>
-                                <p class="card-text">Description of the event goes here.</p>
-                                <a href="#" class="btn bg-danger bg-gradient">View Details</a>
-                            </div>
-                        </div>
+
+    <div class="container mt-4">
+        {% for event in events %}
+            <div class="card">
+                <div class="matchup-container">
+                    <div class="team">
+                        <h5 class="team-name">{{ event.home_team }}</h5>
+                        <small class="text-muted">Home</small>
                     </div>
-                {% endfor %}
+                    <div class="vs">VS</div>
+                    <div class="team">
+                        <h5 class="team-name">{{ event.away_team }}</h5>
+                        <small class="text-muted">Away</small>
+                    </div>
+                    <div class="event-time">
+                        <i class="fas fa-clock me-2"></i>
+                        {{ event.event_time }}
+                    </div>
+                    <div class="action-container">
+                        <a href="#" class="btn btn-view-details">View Details</a>
+                    </div>
+                </div>
             </div>
-        </div>
+        {% endfor %}
+    </div>
     </body>
 </html>
