@@ -4,7 +4,7 @@
     text: # */
 
 .navbar.navbar-expand-lg {
-    background-color: #c94c4c; !important
+    background-color: #c94c4c !important; /* Corrected placement of !important */
 }
 
 .navbar.navbar-expand-lg .navbar-nav .nav-link {
