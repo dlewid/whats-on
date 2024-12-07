@@ -1,1 +1,37 @@
-<h1>this is the reviews</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Reviews</title>
+        {% load static %}
+    </head>
+    <body>
+        <h1>Reviews</h1>
+        <!-- Form for submitting a new review -->
+        <form method="post">
+            {% csrf_token %} {{ form.as_p }}
+            <button type="submit">Submit Review</button>
+        </form>
+        <hr />
+        <!-- List of reviews -->
+        <ul>
+            {% for review in reviews %}
+                <li>
+                    {{ review.review_text }}
+                    <br />
+                    {% for star in review.star_range %}
+                        <img src="{% static 'images/star.png' %}"
+                             alt="Star"
+                             height="20px"
+                             width="20px" />
+                    {% endfor %}
+                    {% for star in review.no_star_range %}
+                        <img src="{% static 'images/unfilled_star.png' %}"
+                             alt="Star"
+                             height="20px"
+                             width="20px" />
+                    {% endfor %}
+                </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
